@@ -6,7 +6,11 @@
 //
 
 #import "TBAlertController.h"
+#if defined(TB_ACTION_SHEET_PACKAGE)
+#import "Utils/TBMacro.h"
+#else
 #import "TBMacro.h"
+#endif
 #import <objc/runtime.h>
 
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"

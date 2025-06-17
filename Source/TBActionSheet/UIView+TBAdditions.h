@@ -15,7 +15,7 @@
 @end
 
 @interface UIView (TBActionSheet)
-- (void)interruptGesture;
+- (void)tb_interruptGesture;
 @end
 
 #pragma mark - UIView (RectCorner)
@@ -33,5 +33,5 @@ typedef NS_OPTIONS(NSUInteger, TBRectCorner) {
 
 @interface UIView (TBRectCorner)
 @property (nonatomic, assign) TBRectCorner tbRectCorner;
-- (void)setCornerRadius:(CGFloat) radius;
+- (void)tb_setCornerRadius:(CGFloat) radius;
 @end

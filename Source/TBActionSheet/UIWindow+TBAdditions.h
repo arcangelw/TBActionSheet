@@ -12,5 +12,5 @@
 
 - (UIViewController *)tb_viewControllerForStatusBarStyle;
 - (UIViewController *)tb_viewControllerForStatusBarHidden;
-- (UIViewController *)currentViewController;
+- (UIViewController *)tb_currentViewController;
 @end

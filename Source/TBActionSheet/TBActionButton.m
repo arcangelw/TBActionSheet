@@ -7,7 +7,11 @@
 //
 
 #import "TBActionButton.h"
+#if defined(TB_ACTION_SHEET_PACKAGE)
+#import "Utils/TBMacro.h"
+#else
 #import "TBMacro.h"
+#endif
 
 /**
  *  可定制风格和圆角的按钮

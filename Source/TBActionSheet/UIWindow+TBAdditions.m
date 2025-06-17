@@ -7,7 +7,11 @@
 //
 
 #import "UIWindow+TBAdditions.h"
+#if defined(TB_ACTION_SHEET_PACKAGE)
+#import "Utils/TBMacro.h"
+#else
 #import "TBMacro.h"
+#endif
 
 @implementation UIWindow (TBAdditions)
 
@@ -15,7 +19,7 @@
 
 - (UIViewController *)tb_viewControllerForStatusBarStyle
 {
-    UIViewController *currentViewController = [self currentViewController];
+    UIViewController *currentViewController = [self tb_currentViewController];
     while ([currentViewController childViewControllerForStatusBarStyle]) {
         currentViewController = [currentViewController childViewControllerForStatusBarStyle];
     }
@@ -24,14 +28,14 @@
 
 - (UIViewController *)tb_viewControllerForStatusBarHidden
 {
-    UIViewController *currentViewController = [self currentViewController];
+    UIViewController *currentViewController = [self tb_currentViewController];
     while ([currentViewController childViewControllerForStatusBarHidden]) {
         currentViewController = [currentViewController childViewControllerForStatusBarHidden];
     }
     return currentViewController;
 }
 
-- (UIViewController *)currentViewController
+- (UIViewController *)tb_currentViewController
 {
     UIViewController *viewController = self.rootViewController;
     while (viewController.presentedViewController) {

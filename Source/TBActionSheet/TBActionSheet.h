@@ -6,7 +6,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#if defined(TB_ACTION_SHEET_PACKAGE)
+#import <TBActionSheet/TBActionButton.h>
+#import <TBActionSheet/TBAlertController.h>
+#import <TBActionSheet/UIWindow+TBAdditions.h>
+#else
 #import "TBActionButton.h"
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 

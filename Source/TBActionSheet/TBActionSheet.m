@@ -6,8 +6,13 @@
 //
 
 #import "TBActionSheet.h"
+#if defined(TB_ACTION_SHEET_PACKAGE)
+#import "Utils/UIImage+BoxBlur.h"
+#import "Utils/TBMacro.h"
+#else
 #import "UIImage+BoxBlur.h"
 #import "TBMacro.h"
+#endif
 #import "TBActionContainer.h"
 #import "TBActionBackground.h"
 #import "TBActionSheetController.h"
@@ -342,7 +347,7 @@ typedef void (^TBBlurEffectBlock)(void);
     }
     
     self.previousKeyWindow = [UIApplication sharedApplication].keyWindow;
-    [self.previousKeyWindow interruptGesture];
+    [self.previousKeyWindow tb_interruptGesture];
     TBActionSheetController *actionSheetVC = [[TBActionSheetController alloc] initWithNibName:nil bundle:nil];
     actionSheetVC.actionSheet = self;
     
@@ -572,12 +577,12 @@ typedef void (^TBBlurEffectBlock)(void);
     }];
     
     for (TBActionButton *btn in self.buttons) {
-        [btn setCornerRadius:self.rectCornerRadius];
+        [btn tb_setCornerRadius:self.rectCornerRadius];
         btn.titleLabel.font = self.buttonFont;
     }
     
-    [self.actionContainer.header setCornerRadius:self.rectCornerRadius];
-    [self.actionContainer.custom setCornerRadius:self.rectCornerRadius];
+    [self.actionContainer.header tb_setCornerRadius:self.rectCornerRadius];
+    [self.actionContainer.custom tb_setCornerRadius:self.rectCornerRadius];
     
     TBWeakSelf(self);
     UIImage *(^cutOriginalBackgroundImageInRect)(CGRect frame) = ^UIImage *(CGRect sourceFrame) {
@@ -899,7 +904,7 @@ typedef void (^TBBlurEffectBlock)(void);
 - (UIImage *)screenShotRect:(CGRect)aRect
 {
     // 获取最上层的 UIViewController
-    UIViewController *topController = [self.previousKeyWindow currentViewController];
+    UIViewController *topController = [self.previousKeyWindow tb_currentViewController];
     UIView *view = topController.view;
     
     UIGraphicsBeginImageContext(view.bounds.size);

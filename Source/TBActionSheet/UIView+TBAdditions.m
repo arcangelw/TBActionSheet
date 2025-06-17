@@ -8,7 +8,11 @@
 
 #import "UIView+TBAdditions.h"
 #import <objc/runtime.h>
+#if defined(TB_ACTION_SHEET_PACKAGE)
+#import "Utils/TBMacro.h"
+#else
 #import "TBMacro.h"
+#endif
 
 @implementation TBMaskView
 
@@ -29,7 +33,7 @@
 
 @implementation UIView (TBActionSheet)
 
-- (void)interruptGesture
+- (void)tb_interruptGesture
 {
     for (UIGestureRecognizer *gesture in self.gestureRecognizers) {
         if (([gesture isKindOfClass:[UITapGestureRecognizer class]] || [gesture isKindOfClass:[UIPanGestureRecognizer class]]) && gesture.enabled == YES) {
@@ -38,7 +42,7 @@
         }
     }
     for (UIView *subview in self.subviews) {
-        [subview interruptGesture];
+        [subview tb_interruptGesture];
     }
 }
 
@@ -112,7 +116,7 @@
     [self applyMaskPath:nil];
 }
 
-- (void)setCornerRadius:(CGFloat) radius
+- (void)tb_setCornerRadius:(CGFloat) radius
 {
     if (radius == 0) {
         [self setNoneCorner];

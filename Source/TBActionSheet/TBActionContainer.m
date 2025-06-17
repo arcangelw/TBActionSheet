@@ -7,7 +7,11 @@
 //
 
 #import "TBActionContainer.h"
+#if defined(TB_ACTION_SHEET_PACKAGE)
+#import "Utils/TBMacro.h"
+#else
 #import "TBMacro.h"
+#endif
 #import "TBActionSheet.h"
 #import "TBActionButton.h"
 #import "UIView+TBAdditions.h"
@@ -92,8 +96,8 @@
         [self insertSubview:blurEffectView atIndex:0];
         [self.tempViews addObject:blurEffectView];
         
-        [blurEffectView setCornerRadius:self.actionSheet.rectCornerRadius];
-        [colorView setCornerRadius:self.actionSheet.rectCornerRadius];
+        [blurEffectView tb_setCornerRadius:self.actionSheet.rectCornerRadius];
+        [colorView tb_setCornerRadius:self.actionSheet.rectCornerRadius];
         
         [self insertSubview:colorView atIndex:0];
         [self.tempViews addObject:colorView];

@@ -9,7 +9,11 @@
 #import "TBActionSheetController.h"
 #import "TBActionSheet.h"
 #import "UIWindow+TBAdditions.h"
+#if defined(TB_ACTION_SHEET_PACKAGE)
+#import "Utils/TBMacro.h"
+#else
 #import "TBMacro.h"
+#endif
 
 @implementation TBActionSheetController
 
